@@ -2,12 +2,10 @@ Step1:Extracting hybris suite
   create a new folder naming smallcase letter- eg.,hybrissuite
   Extract the hybris suite in the created folder
   After extracting we can see only bin folder inside hybris folder
-
 Step2:Installing recipes
   go to installer folder and type cmd in browser.
   type the below cmd and hit enter:
   install.bat –r b2c_acc_plus
-
 Step3:Modulegen
   once the bulid is successful. we see the config(localextenstions.xml),data,log,roles,temp folders created along with bin folder
   We can find all the available recipe in hybris under below directory
@@ -16,28 +14,20 @@ Step3:Modulegen
     setantenv.bat
     ant modulegen -Dinput.module=accelerator -Dinput.name=b2cstore -Dinput.package=com.hybris.b2cstore -Dinput.template=develop
   Remove yaccelerator's extensions from localextenstions.xml and add the b2cstore extensions in localextenstions.xml
-  
 Step4:Ant clean all
   run below command in platform folder cmd promt:
     antcleanall
-stpe5:Start a server
+Stpe5:Start a server
   once the buils is successful start the hybris server using below command in platform folder
     hybrisserver.bat
-step6:Initialize hac
+Step6:Initialize hac
   open hac in browser using below link:
     http://localhost:9001/hac 
   In update select the toggle all check box and initialize all the extensions.
-step7: URL mappings: 
+Step7: URL mappings: 
   open a host file in the  C:\Windows\System32\drivers\etc path and add below hosts
     127.0.0.1   apparel.local
     127.0.0.1   electronics.local
 Step8: Access a site
   Try accessing a below site in broswer, Installation got completed once we are able to see the site are up and running
   http://apparel.local:9001/trainingstorefront/?site=apparel-uk
-  
- 
- 
-  
-  
-  
-  
