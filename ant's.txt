@@ -29,13 +29,16 @@ ant clean all:
 
     Runs an initialization of the specified tenant in stand-alone mode, using hybris Administration Console default settings. 
         Syntax: ant initialize [-Dtenant=tenantID -DdryRun=true|false -DtypeSystemOnly=true|false]
+        
  ant update:
     Update does the following things
     it will just modify the changes requested,it will not clear any existing data or tables.
     If we are requesting to create the new tables or columns,update will do that without modifying any other details in DB.
     So update will be faster than initialize
     Note:
-    Existing data will not be lost if we do Update.
+    Existing data will not be lost if we do Update.  
+    after update we can see that custom data is preserved.
+    initialize operation should be used only on the first time of hybris installation or in some situation which demands it(like database might be corrupted) but make  sure to take a backup of data before doing it.
  
  installbundle:          
   Install bundle
