@@ -1,0 +1,19 @@
+E:\hybrissuite\installer>install.bat -r my_b2c
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Project directory 'E:\hybrissuite\installer\recipes\my_b2c' does not exist.
+
+* Try:
+Run with --stacktrace option to get the stack trace. Run with --info or --debug option to get more log output.
+
+BUILD FAILED
+
+Total time: 29.716 secs
+Problem with java process - finished with non-zero exit code (1)
+
+
+Solution:
+
+specify the recipe name correctly.
+E:\hybrissuite\installer>install.bat -r b2c_acc_plus
