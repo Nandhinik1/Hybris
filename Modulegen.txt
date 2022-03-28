@@ -1,0 +1,15 @@
+modulegen:
+
+Ant command used to generate the set of logically related extensions at once
+
+ant modulegen -Dinput.module=accelerator -Dinput.name=training -Dinput.package=com.hybris.training -Dinput.template=develop
+
+we have specified module as accelerator which means we are developing B2C module.
+
+we can specify any name to the module, we have given training for the same.
+
+We can also specify the java class package prefix, we have given as com.hybris.training
+
+Template specifies whether configuration is for development or production.
+
+We have given it as develop as we are doing for development environment.
