@@ -1,0 +1,12 @@
+Issue:
+*** LICENSE VERIFICATION HAS FAILED! ***
+**************************************************************
+Your demo/develop license has expired, it is valid only for 30 days. If you're using develop licence you need to reinitialize database to continue your work.
+**************************************************************
+hybris licence [licence.advancedsecurity=true;licence.clustering=true;licence.date=2013.03.27;licence.email=support@hybris.com;licence.endcustomer=hybris AG;licence.eulaversion=2.0;licence.expiration=;licence.highperformance=true;licence.id=000001-001;licence.name=hybris Demo Licence;licence.version=5.0;]
+shutting down hybris registry..
+
+FIX:
+Go to the platform folder and paste the below command for windows user,
+
+	license.bat -temp CPS_SQL
