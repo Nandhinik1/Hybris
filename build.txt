@@ -22,9 +22,21 @@ ant clean all:
      3)Ant all is faster than ant clean all 
      
  ant initialize:
+    Removes all the existing data
+    Drops all the existing schema and tables
+    Recreates the schema and tables
+    Reload the data(seed data given by hybris, we can also load our own data)
+
     Runs an initialization of the specified tenant in stand-alone mode, using hybris Administration Console default settings. 
-    Syntax: ant initialize [-Dtenant=tenantID -DdryRun=true|false -DtypeSystemOnly=true|false]
-    
+        Syntax: ant initialize [-Dtenant=tenantID -DdryRun=true|false -DtypeSystemOnly=true|false]
+ ant update:
+    Update does the following things
+    it will just modify the changes requested,it will not clear any existing data or tables.
+    If we are requesting to create the new tables or columns,update will do that without modifying any other details in DB.
+    So update will be faster than initialize
+    Note:
+    Existing data will not be lost if we do Update.
+ 
  installbundle:          
   Install bundle
 
