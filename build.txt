@@ -1,0 +1,112 @@
+ant is used to build framework.
+
+ant clean all:
+    1) Check folder structure
+    ant clean all will check for a folder structure the below folders, if those are not present create those
+      config,data,log,roles,temp  
+    2) Check for the build:
+      If(no build) 
+         create from scratch
+      else
+        delate and recreate it
+     3)Used for the first time while setup the suite and modification in items.xml
+     4)takes time to complete as it is does the ant all jobs along with some extra tasks
+      
+ ant all:
+    1) It assumes folder structure is already exist
+    2)Check for the build:
+    If(no build) 
+         create from scratch
+      else
+        update/modify the old build
+     3)Ant all is faster than ant clean all 
+     
+ ant initialize:
+    Runs an initialization of the specified tenant in stand-alone mode, using hybris Administration Console default settings. 
+    Syntax: ant initialize [-Dtenant=tenantID -DdryRun=true|false -DtypeSystemOnly=true|false]
+    
+ installbundle:          
+  Install bundle
+
+    
+  activateInstance         Activates role's instance given by -Drole.name and -Dinstance.name parameters.
+ activateRole             Activates role given by -Drole.name parameter.
+ addonclean               Clean addons
+ addoninstall             Install addon
+ addonuninstall           Uninstall addon
+ all                      executes ant build and ant server
+ alltests                 executes all tests except manualtests and performancetests (allowed parameters: -Dtestclasses.extensions -Dtestclasses.annotations -Dtestclasses.packages -Dtestclasses.packages.excluded)
+ allwebtests
+ apidoc                   build javadoc for all current extensions
+ bugprooftests            executes all bugprooftests
+ build                    Builds all extensions
+ classpathgen             Creates a standard platform .classpath file
+ clean                    Cleans platform and all extensions
+ cleanMavenDependencies   Deletes all maven dependencies in all extensions
+ cleanear                 Cleans ear file
+ clearAdministrationLock  Clears any administration lock, which can be left after unfinsihed system update or initialization. This will work only for cluster node which acquired such a lock.
+ clearOrphanedTypes       Clears orphaned types after system update. Syntax: ant clearOrphanedTypes [-DclearInstances=true/false -DclearDeployments=true/false]. Default value for clearInstances is true, default value for clearDeployments is true
+ codequality              executes all codequality tests
+ commonwebclean           Clean common web sources
+ compileuisrc             compile the _ui-src folder in _ui
+ createConfig             If not present creates config folder using template provided by -Dinput.template variable.
+ createInstance           Creates role ${role.name}'s instance given by -Drole.name and -Dinstance.name parameters.
+ createRole               Creates role given by -Drole.name parameter. Uses current config as a base. If -Dclean.config parameter is set to true localextensions.xml and local.properties files will not be copied.
+ createSolrInstance       Creates a Solr instance [allowed parameters: -Dinstance.name -Dinstance.conf.dir -Dinstance.data.dir -Dinstance.log.dir].
+ createtypesystem         Creates type system tables.
+ customize                Copies all files from '/config/customize' folder to '/bin' folder recursively
+ deactivateInstance       Deactivates instance.
+ deactivateRole           Deactivates role.
+ deleteInstance           Deletes role's instance given by -Drole.name and -Dinstance.name parameters.
+ deleteRole               Deletes role given by -Drole.name parameter.
+ deleteSolrInstance       Deletes a Solr instance [allowed parameters: -Dinstance.name -Dinstance.conf.dir -Dinstance.data.dir -Dinstance.log.dir].
+ demotests                executes all demotests
+ deploy                   Deploys platform to bundled server. Will copy files of config/tomcat or config/tcServer to config folder of configured bundled server.
+ deployDist               Deploys a distribution package to maven repository.
+ deployDistWithSources    Deploys distribution and source packages to maven repository.
+ dist                     Creates a distribution
+ distWithSources          Creates distribution and source packages.
+ droptypesystem           Drops type system tables.
+ ear                      Builds ear file
+ executeScript            Executes script from file. Syntax: ant executeScript -Dresource=scriptURI [-Dparams="key1=value1,key2=value2"] (example ant executeScript -Dresource=file:///path/to/script.groovy)
+ executesql               Executes raw sql using the current platform database settings. You must provide a ${sql.file} property!
+ extensionsxml            Generates complete extensions.xml file config/generatedextensions.xml  based on current settings of localextensions.xml
+ extgen                   Runs extgen
+ generateLicenseOverview  Downloads all third party licenses and generates an overview file
+ importImpex              Import ImpEx from file. Syntax: ant importImpex -Dresource=/full/path/to/import.impex
+ initialize               Runs an initialization of the specified tenant in stand-alone mode, using hybris Administration Console default settings. Syntax: ant initialize [-Dtenant=tenantID -DdryRun=true|false -DtypeSystemOnly=true|false]
+ initializetenantdb       Runs an initialization of the specified tenant database tables without building or restarting server
+ installbundle            Install bundle
+ integrationtests         executes all integrationtests
+ jacocoalltests           runs allstests with jacoco attached
+ listRoles                Lists roles.
+ localizationtest         executes the localizationtest to see if all types are properly localized
+ localproperties          Appends properties to local.properties
+ manualtests              executes all manualtests
+ migrate_cockpit_config   converts configuration from csv file into proper folder structure
+ modulegen                Runs modulegen
+ performancetests         performancetests
+ pmd                      Tests the source code with the pmd rules.
+ production               Creates production environment zip's for hybris Server
+ runcronjob               Performs a  cronjob in stand-alone mode. Syntax: ant runcronjob [-Dcronjob] [-Dtenant]. Use -Dcronjob to pass a CronJob code, such as -Dcronjob=MyCronJob. Use quotation marks for CronJob codes with spaces, such as -Dcronjob="My Cron Job".
+ sanitycheck              Executes sanity check (db health check, license check, etc...) on current platform
+ server                   Configures hybris Server and restart if running
+ sonar                    Executes sonar to check all projects with the sonar rules.
+ sonarsingle              Executes sonar to check a single project with the sonar rules.
+ sourcezip                Creates a sourcezip
+ startAdminServer         Starts the hybris AdminServer
+ startHybrisServer        Starts the hybris Server
+ startSolrServer          Starts a Solr server [allowed parameters: -Dinstance.name -Dinstance.port -Dinstance.conf.dir -Dinstance.data.dir -Dinstance.log.dir -Dinstance.memory -Dinstance.javaoptions].
+ stopSolrServer           Stops a Solr server [allowed parameters: -Dinstance.name -Dinstance.port -Dinstance.data.dir].
+ syncaddons               Synchronize addons without touching the appserver
+ testMavenDependencies    Test all maven dependencies in platform and all extensions
+ typecodetest             executes the typecodetest to see if any reserved typecodes are being used
+ unittests                executes all unittests
+ updateMavenDependencies  Updates all maven dependencies in all extensions
+ updateSpringXsd          Converts spring xsd definitions to versionless.
+ updatesystem             Runs an update system of the specified tenant in stand-alone mode, using hybris Administration Console default settings or the configuration from a given file. Syntax: ant updatesystem [-Dtenant=tenantID -DdryRun=true|false -DtypeSystemOnly=true|false -DconfigFile=PATH_TO_CONFIG_FILE]
+ webservice_nature        Provides webservice nature to selected extension
+ yunitinit                Initializes JUnit tenant
+ yunitupdate              Update JUnit tenant
+Default target: all
+ 
