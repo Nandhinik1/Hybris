@@ -1,0 +1,46 @@
+Step1:Extracting hybris suite
+  create a new folder naming smallcase letter- eg.,hybrissuite
+  Extract the hybris suite in the created folder
+  After extracting we can see only bin folder inside hybris folder
+Step2:Installing recipes
+  go to installer folder and type cmd in browser.
+  type the below cmd and hit enter:
+  install.bat –r b2c_acc
+Step3:Modulegen
+  once the bulid is successful. we see the config(localextenstions.xml),data,log,roles,temp folders created along with bin folder
+  We can find all the available recipe in hybris under below directory
+  E:\hybrissuite\installer\recipes
+  Navigate to platform folder inside bin folder->type cmd in browser-> Execute below command:
+    setantenv.bat
+    ant modulegen -Dinput.module=accelerator -Dinput.name=b2bstore -Dinput.package=com.hybris.b2bstore -Dinput.template=develop
+  Remove yaccelerator's extensions from localextenstions.xml and add the new(b2bstore) extensions in localextenstions.xml
+
+Step4: Add below b2b extensions in localextenstions.xml
+  <extension name='powertoolsstore' />
+  <extension name='b2bcommercebackoffice' />
+  <extension name='b2badmincockpit' />
+  <extension name='b2bacceleratoraddon' />
+  <extension name='commerceorgaddon' />
+Step5:Install B2B Accelerator AddOns
+  Install the B2B Accelerator AddOns on the mystore storefront by running the following ant command from the "platform “ folder
+  Command to install the AddOns:
+    ant addoninstall -Daddonnames="b2bacceleratoraddon" -DaddonStorefront.yacceleratorstorefront="b2bstorestorefront"
+    ant addoninstall -Daddonnames="commerceorgaddon" -DaddonStorefront.yacceleratorstorefront="b2bstorestorefront"
+Stpe6:
+  Add the following properties to “ < HYBRIS_HOME >/hybris/config/local.properties “ file
+    website.powertools.http=http://powertools.local:9001/b2bstorestorefront
+    website.powertools.https=https://powertools.local:9002/b2bstorestorefront
+  
+Step7:Ant clean all
+  run below command in platform folder cmd promt:
+    antcleanall
+Stpe8:Start a server
+  once the buils is successful start the hybris server using below command in platform folder
+    hybrisserver.bat
+Step9:Initialize hac
+  open hac in browser using below link:
+    http://localhost:9001/hac 
+  In update select the toggle all check box and initialize all the extensions.
+Step10: Access a site
+  Try accessing a below site in broswer, Installation got completed once we are able to see the site are up and running
+  https://powertools.local:9002/mystorestorefront/powertools/en/USD
