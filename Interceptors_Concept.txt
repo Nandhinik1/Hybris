@@ -1,0 +1,34 @@
+Interceptors:
+Mdels in Hybris are representation of database tables and we use to save data to db and load from db
+
+Models has its own lifecycle managed by *ModelService* eg., Save,load,prepare,remove,validate 
+
+Five ModelService:
+
+1. InitDefualtsInterceptor :
+
+Called when we want to fill the data by default.called when we call modelService.create() method or modelService.initDefaults()
+
+2. PrepareInterceptor:
+
+Called before saving a data and after the ValidateInterceptor got called
+
+  Used to add values to model or modify the existing ones
+
+3. ValidateInterceptor :
+
+ Called before saving a data and after PrepareInterceptor prepares the data
+
+Use to validate the values, if any values are not correct then through interuptorException
+
+4. LoadInterceptor :
+
+   Called when we retrieve the data from database. We can use this modify the retrieved model value if required
+
+5. RemoveInterceptor:
+
+   Called before removing or deleting a data from database.
+
+   We can use "remove interceptor whenever we need to remove models that are related to the model but are not in the
+
+mmodel context."
