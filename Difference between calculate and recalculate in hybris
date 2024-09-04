@@ -1,0 +1,17 @@
+Difference between calculate(order) and recalculate(order) in SAP Hybris calculationService:
+
+calculationService.calculate(order): Efficient, recalculates only what’s necessary
+  Purpose: 
+    This method calculates the given order and all its entries only if they haven’t been calculated yet or if the order has been modified.
+  Behavior: 
+    It fetches prices, taxes, and discounts for uncalculated or modified entries only. Entries that are already calculated and unchanged remain as they are.
+  Use Case: 
+    Use this method when you want to ensure that all necessary calculations are performed without recalculating everything from scratch. It’s efficient for orders where only some parts need recalculating.
+
+calculationService.recalculate(order): Comprehensive, recalculates everything
+  Purpose: 
+    This method recalculates the entire order and all its entries, regardless of their current state.
+  Behavior: 
+    It recalculates all prices, taxes, and discounts for the entire order, ensuring that everything is up-to-date.
+  Use Case: 
+    Use this method when you need to ensure that the entire order is recalculated, such as after significant changes that affect the whole order
