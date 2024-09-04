@@ -1,0 +1,29 @@
+To add a product to an order after it has been placed in SAP Hybris via code contains below steps:
+  1. Retrieve the Order - Fetch the order from orderservice
+  2. Create a New Order Entry: Create a new OrderEntryModel for the product you want to add
+  3. Add the Order Entry to the Order: Add the newly created OrderEntryModel to the order’s entries
+  4. save
+  5. recalculate the order
+
+code:
+  //fetch the order
+  OrderModel order = orderService.getOrderForCode(orderCode); 
+
+  //Create a New Order Entry
+  ProductModel product = productService.getProductForCode(productCode);
+  OrderEntryModel orderEntry = modelService.create(OrderEntryModel.class);
+  orderEntry.setProduct(product);
+  orderEntry.setQuantity(quantity);
+  orderEntry.setOrder(order);
+
+  //Add the Order Entry to the Order and save it
+  List<AbstractOrderEntryModel> entries = new ArrayList<>(order.getEntries());
+  entries.add(orderEntry);
+  order.setEntries(entries);
+  modelService.save(order);
+
+  //recalculate the order
+  calculationService.recalculate(order);
+  modelService.save(order);
+
+  
