@@ -1,0 +1,3 @@
+OrderModel order = orderService.getOrderForCode(orderCode); //The order is fetched using the OrderService - Order Retrieval
+calculationService.recalculate(order); // recalculate the order, updating prices, taxes, and discounts
+modelService.save(order); // save the order
