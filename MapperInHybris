@@ -1,0 +1,14 @@
+Question:
+why boolean fields are populated in the wsdto response by deafult on the BASIC mapping eventhough we didn't added in hybris?
+
+Answer:
+In Hybris, boolean fields in the Web Services Data Transfer Object (WSDTO) response are populated by default due to the way the DefaultDataMapper and FieldSetBuilder are configured. 
+Here’s a brief explanation:
+DefaultDataMapper: 
+  This component is responsible for mapping data between source and destination objects. It uses a FieldSetBuilder to determine which fields to include in the response1.
+FieldSetBuilder: 
+  This builder supports field configuration and allows you to define sets of fields (like BASIC, DEFAULT, FULL) to be included in the response. Even if you don’t explicitly add boolean fields, they might be included by default due to the configuration of these field sets2.
+Orika Framework: 
+  The mapping mechanism in Hybris is based on Orika, a Java Bean mapper framework. Orika’s default behavior might include boolean fields unless explicitly excluded2.
+
+To customize this behavior, you can modify the FieldSetBuilder configuration or create custom mappers and filters to exclude specific fields from the response12.
