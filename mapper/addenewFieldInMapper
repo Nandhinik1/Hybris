@@ -1,0 +1,34 @@
+How to add user(BASIC),totalPrice(DEFAULT),created time and order status should be come in the BASIC Field OrderWsDTO response: Hybris OOTB returns only code and guid but i need more field in the response:
+ 
+Any change in field level mapping should me done in myTelcooccaddon-web-spring.xml and dto-level-mappings-v2-spring.xml files which is under the custome extension:
+ 
+myTelcooccaddon-web-spring.xml:
+<!-- dto level mapping for OrderWsDTO -->
+<bean parent="fieldSetLevelMapping" id="orderWsDTOFieldSetLevelMapping">
+<property name="dtoClass"
+                  value="de.hybris.platform.commercewebservicescommons.dto.order.OrderWsDTO"/>
+<property name="levelMapping">
+<map>
+<entry key="BASIC" value="code,guid,user(BASIC),totalPrice(DEFAULT),created,status"/>
+<entry key="DEFAULT"
+                       value="unconsignedEntries(DEFAULT),status,created,deliveryStatusDisplay,statusDisplay,consignments(DEFAULT),guestCustomer,deliveryStatus,store,appliedOrderPromotions(DEFAULT),pickupItemsQuantity,net,calculated,appliedVouchers(DEFAULT),productDiscounts(DEFAULT),totalDiscounts(DEFAULT),subTotal(DEFAULT),orderDiscounts(DEFAULT),entries(DEFAULT),appliedProductPromotions(DEFAULT),totalPrice(DEFAULT),site,deliveryMode(DEFAULT),code,deliveryOrderGroups(DEFAULT),guid,paymentInfo(DEFAULT),pickupOrderGroups(DEFAULT),totalItems,totalPriceWithTax(DEFAULT),deliveryItemsQuantity,totalTax(DEFAULT),user(DEFAULT),deliveryAddress(DEFAULT),deliveryCost(DEFAULT),orderCosts,paymentStatus,deliveryDate,deliveryTime,lLAInstallationMethod,deliveryScheduleInTime,portabilityCheckFailed"/>
+<entry key="FULL"
+                       value="unconsignedEntries(FULL),status,created,deliveryStatusDisplay,statusDisplay,consignments(FULL),guestCustomer,deliveryStatus,store,appliedOrderPromotions(FULL),pickupItemsQuantity,net,calculated,appliedVouchers(FULL),productDiscounts(FULL),totalDiscounts(FULL),subTotal(FULL),orderDiscounts(FULL),entries(FULL),appliedProductPromotions(FULL),totalPrice(FULL),site,deliveryMode(FULL),code,deliveryOrderGroups(FULL),guid,paymentInfo(FULL),pickupOrderGroups(FULL),totalItems,totalPriceWithTax(FULL),deliveryItemsQuantity,totalTax(FULL),user(FULL),deliveryAddress(FULL),deliveryCost(FULL),orderCosts,paymentStatus,deliveryDate,deliveryTime,lLAInstallationMethod,deliveryScheduleInTime,portabilityCheckFailed"/>
+</map>
+</property>
+</bean>
+ 
+dto-level-mappings-v2-spring.xml:
+ 
+<bean parent="fieldSetLevelMapping" id="orderWsDTOFieldSetLevelMapping">
+<property name="dtoClass"
+                  value="de.hybris.platform.commercewebservicescommons.dto.order.OrderWsDTO"/>
+<property name="levelMapping">
+<map>
+<entry key="BASIC" value="code,guid,user(BASIC),totalPrice(DEFAULT),created,status"/>
+<entry key="DEFAULT"
+                       value="unconsignedEntries(DEFAULT),status,created,deliveryStatusDisplay,statusDisplay,consignments(DEFAULT),guestCustomer,deliveryStatus,store,appliedOrderPromotions(DEFAULT),pickupItemsQuantity,net,calculated,appliedVouchers(DEFAULT),productDiscounts(DEFAULT),totalDiscounts(DEFAULT),subTotal(DEFAULT),orderDiscounts(DEFAULT),entries(DEFAULT),appliedProductPromotions(DEFAULT),totalPrice(DEFAULT),site,deliveryMode(DEFAULT),code,deliveryOrderGroups(DEFAULT),guid,paymentInfo(DEFAULT),pickupOrderGroups(DEFAULT),totalItems,totalPriceWithTax(DEFAULT),deliveryItemsQuantity,totalTax(DEFAULT),user(DEFAULT),deliveryAddress(FULL),deliveryCost(DEFAULT),installationAddress(FULL),deliveryDate,deliveryTime,isDeliverySchedulingSkipped,InstallationMethod,deliveryScheduleInTime,portabilityCheckFailed"/>
+<entry key="FULL"
+                       value="unconsignedEntries(FULL),status,created,deliveryStatusDisplay,statusDisplay,consignments(FULL),guestCustomer,deliveryStatus,store,appliedOrderPromotions(FULL),pickupItemsQuantity,net,calculated,appliedVouchers(FULL),productDiscounts(FULL),totalDiscounts(FULL),subTotal(FULL),orderDiscounts(FULL),entries(FULL),appliedProductPromotions(FULL),totalPrice(FULL),site,deliveryMode(FULL),code,deliveryOrderGroups(FULL),guid,paymentInfo(FULL),pickupOrderGroups(FULL),totalItems,totalPriceWithTax(FULL),deliveryItemsQuantity,totalTax(FULL),user(FULL),deliveryAddress(FULL),deliveryCost(FULL),installationAddress(FULL),deliveryDate,deliveryTime,isDeliverySchedulingSkipped,InstallationMethod,deliveryScheduleInTime,portabilityCheckFailed"/>
+</map>
+</property>
