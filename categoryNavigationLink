@@ -1,0 +1,17 @@
+Steps to update or remove or add the category in the home page:
+  It can be done from either backoffice(https://localhost:9002/backoffice/) or from the CMSCockpit(https://localhost:9002/cmscockpit/index.zul)
+
+Backoffice:
+  Login to backoffice  
+    -> Go to types 
+    -> CMSNavigationNode 
+    -> search with CategoryNavNode(I am using powertool site) - 
+    -> click the respective category navigation node from the result for your site (example)- PowertoolsCategoryNavNode if nothing is present create new referring to ootb(PowertoolsCategoryNavNode) node
+    -> update or create the children, entry and component inside entry and other required details
+    -> save it
+
+CMS:
+  Login to CMSCockpit
+    -> Click on your site with content catalog -> example(powertoolsite -> content catalog)
+    -> Best practice fo the changes in staged version and sync it to the online version
+    -> Open my company login page and make your changes by editing the required details and sync
