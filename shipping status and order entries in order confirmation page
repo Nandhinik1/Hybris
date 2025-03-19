@@ -1,0 +1,9 @@
+How to change the shipping status from pending to In Transit (Shipping status - In Transit)?
+
+Update the below property :
+text.account.order.unconsignedEntry.status.pending=Shipping status - In Transit
+
+This is coming from the orderUnconsignedEntries.tag file - web/webroot/WEB-INF/tags/addons/chineseaddressaddon/responsive/order/orderUnconsignedEntries.tag 
+                                  (C:\SAP-New\Hybris_New\hybris\bin\custom\yb2bacceleratorstorefront\web\webroot\WEB-INF\tags\addons\chineseaddressaddon\responsive\order\orderUnconsignedEntries.tag)
+                                  and 
+        this tag file getting called from the accountOrderDetailItems.jsp file: C:\SAP-New\Hybris_New\hybris\bin\custom\yb2bacceleratorstorefront\web\webroot\WEB-INF\views\addons\chineseaddressaddon\responsive\pages\account\accountOrderDetailItems.jsp
