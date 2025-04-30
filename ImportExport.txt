@@ -13,7 +13,7 @@ This can be done  in two ways.
 sample export script:
 "#% impex.setTargetFile( ""orders.csv"" , true );"
 INSERT_UPDATE order;code[unique=true];creationtime
-"#% impex.exportItemsFlexibleSearch(""select {o.pk},{o.code},{o.creationTime} from {order as a} where {o.creationTime}>='2025-04-01'"");"
+"#% impex.exportItemsFlexibleSearch(""select {o.pk},{o.code},{o.creationTime} from {order as o} where {o.creationTime}>='2025-04-01'"");"
 
       
 Import is used in SAp CC- Hybirs used to import the data into database
