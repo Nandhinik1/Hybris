@@ -1,0 +1,32 @@
+Export is used in SAp CC- Hybirs to get the data from database.
+This can be done  in two ways.
+    1. hac - hybris administration console:
+       1.1. once logged in to hac, go to console and click on impex export. 
+       1.2 enter the export script and click on execute. 
+       1.3 once the script executed successfully, you can see the download link as a zip and media to download the data. 
+           please note that zip file contain two files, one has script impex and other will have data
+    2. Backoffice :
+      2.1. once logged in to backoffice, search for export
+      2.2. enter the export script, other relevent details such as download as zip, if you want to download it as a zip  file, export option as only export(no re-import) and click and next and start
+      2.3  once the script executed successfully, you can download the exported data.
+  
+sample export script:
+"#% impex.setTargetFile( ""orders.csv"" , true );"
+INSERT_UPDATE order;code[unique=true];creationtime
+"#% impex.exportItemsFlexibleSearch(""select {o.pk},{o.code},{o.creationTime} from {order as o} where {o.creationTime}>='2025-04-01'"");"
+
+      
+Import is used in SAp CC- Hybirs used to import the data into database
+This can be done  in two ways.
+    1. hac - hybris administration console:
+       1.1. once logged in to hac, go to console and click on impex import. 
+       1.2 enter the impex to import  as a content or select the other tab to import the impex as a file and click on execute. 
+       1.3 once the impex imported successfully, you can see success message on screen, if any error occurs you can see the log for the error 
+    2. Backoffice :
+      2.1. once logged in to backoffice, search for import
+      2.2. enter the import script or impex and other relevent details and then click on next and start
+      2.3  once the import script executed successfully, the data will be imported successfully.
+sample impex to import:
+INSERT_UPDATE order;code[unique=true];creationtime
+                   ;2028988          ;2025-04-01
+                   
