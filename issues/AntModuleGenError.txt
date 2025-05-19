@@ -1,0 +1,12 @@
+java.lang.IllegalArgumentException: cannot merge namespace ((yacceleratorcore)) into ((<merged>)) due to duplicate type code 'genderlist' : GenderList::((yacceleratorcore))::YCollectionType[yacceleratorcore-items.xml:8(CollectionTypeTagListener)]<>GenderList::
+
+fix:
+Comment all the below extension to setup b2b site in SAP Commerce:
+comment or remove below extensions from your localextensions.xml file present inside config folder
+				  <extension name='yacceleratorbackoffice' />
+					<extension name='yacceleratorcockpits' />
+					<extension name='yacceleratorcore' />
+					<extension name='yacceleratorfacades' />
+					<extension name='yacceleratorinitialdata' />
+					<extension name='yacceleratorstorefront' />
+				  <extension name='yacceleratorordermanagement' />
