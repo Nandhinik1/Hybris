@@ -1,0 +1,10 @@
+Issue while executing ant extgen cmd:
+[ysetplatformproperties] Web root <web> of the extension <testweb> has been explicitely disabled
+[ysetplatformproperties] ycommercewebservices.webroot '/rest_junit' is already used by extension 'ycommercewebservices'!
+BUILD FAILED
+C:\jsis\JSIS-Suite\hybris\bin\platform\build.xml:9: The following error occurred while executing this line:
+C:\jsis\JSIS-Suite\hybris\bin\platform\resources\ant\antmacros.xml:116: ycommercewebservices.webroot '/rest_junit' is already used by extension 'ycommercewebservices'!
+
+FIX:
+Go to respective extension's (which is use ycommercewebservices template) tenant_junit.properties file and change - your-extension-name.webroot=/rest_junit to your-extension-name.webroot=/your-extension-name_rest_junit Means you need to change the path (should be unique) of the your-extension-name.webroot path
+
