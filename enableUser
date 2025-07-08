@@ -1,0 +1,5 @@
+Impex to enable the user:
+
+UPDATE B2BCustomer;uid[unique=true];loginDisabled
+;mark.rivers@rustic-hw.com;0
+;mark.rivers@pronto-hw.com;0
