@@ -1,0 +1,13 @@
+If backoffice is not loading after the deployment for the first time from the sap portal then follow the below steps:
+
+Environment
+SAP Commerce Cloud
+
+Resolution
+1. Go to your Commerce Cloud Portal of the specific environment.
+2. In public endpoint, click on the backoffice to edit endpoint
+3. Scroll down to the Filtering and Redirects section
+4. Set the IP Filter Sets - Base Rule to Allow ALL
+5. Save
+
+Similar way update the other endpoints as per the need
