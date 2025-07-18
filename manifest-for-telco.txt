@@ -1,0 +1,15 @@
+Upgrade SAP Commerce Cloud version and SAP Commerce Cloud, Telco and Utilities Accelerator version in the manifest.json file to initiate the upgrade process:
+
+{
+       "commerceSuiteVersion" : "2211",
+       "extensionPacks" : [
+       {
+              "name" : "hybris-b2ctelco-suite",
+              "version" : "2302.8"
+       }
+       ],
+       ...
+}
+
+Reference:
+https://help.sap.com/docs/TELCO_ACCELERATOR/dc28ead55a454bc480940f159c96d323/b3763f96ed224dc39d2834d5df5f01b0.html
