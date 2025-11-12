@@ -1,0 +1,28 @@
+BUILD FAILED
+C:\jsis\My-SUITE-221142\hybris\bin\platform\build.xml:13: The following error occurred while executing this line:
+C:\jsis\My-SUITE-221142\hybris\bin\platform\resources\ant\compiling.xml:93: The following error occurred while executing this line:
+C:\jsis\My-SUITE-221142\hybris\bin\platform\resources\ant\antmacros.xml:584: The following error occurred while executing this line:
+C:\jsis\My-SUITE-221142\hybris\bin\platform\resources\ant\antmacros.xml:587: java.lang.IllegalStateException: invalid descriptor MyBankDetail.startDate(java.lang.Date):((Mycore))::YAttributeDescriptor[Mycore-items.xml:1474(AttributeTagListener)][PROPERTY] due to missing type 'java.lang.Date'
+        at de.hybris.bootstrap.typesystem.YDescriptor.getType(YDescriptor.java:88)
+        at de.hybris.bootstrap.typesystem.YDescriptor.validate(YDescriptor.java:50)
+        at de.hybris.bootstrap.typesystem.YAttributeDescriptor.validate(YAttributeDescriptor.java:284)
+        at de.hybris.bootstrap.typesystem.YTypeSystem.validate(YTypeSystem.java:398)
+
+items.xml:
+          <attribute qualifier="startDate" type="java.lang.Date">
+						<persistence type="property"/>
+					</attribute>
+					<attribute qualifier="endDate" type="java.lang.Date">
+						<persistence type="property"/>
+					</attribute>
+
+FIX:
+Incorrect type. Date belongs to Util package of java
+
+correct items.xml
+          <attribute qualifier="startDate" type="java.util.Date">
+						<persistence type="property"/>
+					</attribute>
+					<attribute qualifier="endDate" type="java.util.Date">
+						<persistence type="property"/>
+					</attribute>
