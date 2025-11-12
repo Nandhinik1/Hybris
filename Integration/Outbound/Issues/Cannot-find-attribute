@@ -1,0 +1,6 @@
+Error1 : cannot find attribute quantityTolerence and payload not generated
+
+Fix for ERROR1 : 
+Check the mapping if the attribute quantityTolerence selected in the integration object- type modelling. If not selected select and save it.
+If the issue is still not solved then,
+Delete the Outbound integration authentication and its integration object. Create new outbound api with same name and select all the fields based on the mapping required for the integration and save it
