@@ -1,0 +1,33 @@
+ERROR:
+
+Handling exception class java.lang.ClassCastException: class com.jss.core.enums.OrderTypeEnum cannot be cast to class de.hybris.platform.core.model.ItemModel (com.jss.core.enums.OrderTypeEnum and de.hybris.platform.core.model.ItemModel are in unnamed module of loader de.hybris.tomcat.HybrisWebappLoader$HybrisWebappClassLoader$1$1 @21cf4dd4)
+
+CASE:
+New enum created in items.xml and added the attributes in order model to set the type of an order:
+<enumtype generate="true" code="OrderTypeEnum" autocreate="true" dynamic="true">
+   <value code="SalesOrder"/>
+   <value code="CustomerOrder"/>
+   <value code="S4HanaOrder"/>
+</enumtype>
+
+Attribute create with part of to true to create a new type of OrderTypeEnum if it is not found in the system to avoid the error:
+<attribute autocreate="true" qualifier="orderType" type="OrderTypeEnum" generate="true">
+   <persistence type="property"/>
+   <modifiers read="true" write="true" search="true" optional="true" partof="true"/>
+</attribute>
+
+Explanation:
+  partof="true" means the attribute declares a composition relationship implying the referenced item lifecycle depends on the owning item (like a child entity).
+  This relationship is only valid for references to other ItemModel instances, but enums are not ItemModels—they are enumeration values.
+  So when the platform tries to treat your enum attribute as a child item (due to partof="true"), it attempts to cast the enum value to ItemModel which fails causing the ClassCastException.
+
+FIX:
+  Remove partof="true" from the enum attribute definition. Enums must not be marked as partof because they are value types, not separate items.
+  corrected attribute should be:
+      <attribute autocreate="true" qualifier="orderType" type="OrderTypeEnum" generate="true">
+         <persistence type="property"/>
+         <modifiers read="true" write="true" search="true" optional="true"/>
+      </attribute>
+
+
+  
