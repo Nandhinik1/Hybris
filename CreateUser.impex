@@ -1,0 +1,3 @@
+$defaultPassword=test123
+INSERT_UPDATE Employee; UID[unique = true]   ; groups(uid)[mode = append]		; loginDisabled	;name		;description;sessionLanguage(isocode);password
+                      ; backofficeuser               ; backofficeadministratorrole		; FALSE			;BO user	;BO user	;en						 ;test123
