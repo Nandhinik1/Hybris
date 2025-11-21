@@ -1,0 +1,37 @@
+The code used:
+    private static final String FETCH_ORDER_BY_CODE_AND_USER = "SELECT {o.pk} FROM {Order AS o} WHERE {o.code} = ?code AND {o.user} = ?user";
+
+    @Override
+    public OrderModel getOrderDetailsForCodeAndUser(String code, UserModel user) {
+        final FlexibleSearchQuery query = new FlexibleSearchQuery(FETCH_ORDER_BY_CODE_AND_USER);
+        query.addQueryParameter("code", code);
+        query.addQueryParameter("user", user);
+        final SearchResult<OrderModel> result = flexibleSearchService.search(query);
+        LOG.info(String.format("Query to get order details for code and user :: %s", query));
+        if(CollectionUtils.isEmpty(result.getResult())) {
+            throw new IllegalArgumentException(String.format("Order with code :: %s for the user :: %s not found", code, user.getUid()));
+        }
+        return result.getResult().get(0);
+    }
+ISSUE:
+  Unable to get the results. returns exception
+
+FIX:
+1. Run the query in hac to check if you are able to get the result . If No correct the query. Note: Above code working fine on HAC
+2. add query.setDisableSearchRestrictions(true); in the code. This fix my issue
+
+Corrected code:
+    @Override
+    public OrderModel getOrderDetailsForCodeAndUser(String code, UserModel user) {
+        final FlexibleSearchQuery query = new FlexibleSearchQuery(FETCH_ORDER_BY_CODE_AND_USER);
+        query.addQueryParameter("code", code);
+        query.addQueryParameter("user", user);
+        query.setDisableSearchRestrictions(true);
+        final SearchResult<OrderModel> result = flexibleSearchService.search(query);
+        LOG.info(String.format("Query to get order details for code and user :: %s", query));
+        if(CollectionUtils.isEmpty(result.getResult())) {
+            throw new IllegalArgumentException(String.format("Order with code :: %s for the user :: %s not found", code, user.getUid()));
+        }
+        return result.getResult().get(0);
+    }
+
