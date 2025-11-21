@@ -1,0 +1,81 @@
+Inbound and Outbound in SAP Commerce Integration refer to the direction of data flow between SAP Commerce Cloud and external systems:
+
+Inbound Integration means data is received (imported) into SAP Commerce from an external system.
+
+Outbound Integration means data is sent (exported) from SAP Commerce to an external system.
+
+An Integration Object in SAP Commerce is a defined metadata structure that represents the business entity being exchanged via integration. It serves as the blueprint for data exchange and defines which types and attributes of SAP Commerce data are involved in communication.
+
+Step-by-Step Guide to Understand and Create Integration Objects
+Understand Integration Object Basics:
+
+Integration Objects represent business entities from SAP Commerce in a structured form.
+
+They enable data integration by defining the schema used in OData-based APIs.
+
+There are Inbound Integration Objects (for importing data) and Outbound Integration Objects (for exporting data).
+
+Set Up Your SAP Commerce Environment:
+
+Access the SAP Commerce Backoffice.
+
+Navigate to the Integration UI Tool for Integration Object modeling.
+
+Create an Integration Object:
+
+Click on the plus icon to create a new Integration Object.
+
+Give it a meaningful name, usually prefixed with Inbound or Outbound to indicate its usage.
+
+Select the root type (e.g., a type representing your business entity like Product, Customer, Order, or a custom type).
+
+Choose the integration type: Inbound or Outbound depending on data direction.
+
+Define Integration Object Items and Attributes:
+
+Add items that represent SAP Commerce types related to your root type.
+
+Map attributes you want to include in the integration object for each item.
+
+Ensure unique identifiers like code or integrationKey are included for correct entity mapping.
+
+Save and Generate EDMX Schema:
+
+The Integration Object automatically generates an EDMX schema describing its OData interfaces.
+
+Use this schema for API communication and for external systems to understand data structure.
+
+Using ImpEx for Integration Object Creation (Alternative):
+
+You can use ImpEx scripts to define integration objects and their items/attributes.
+
+Example snippet to create an integration object and items:
+
+text
+INSERT_UPDATE IntegrationObject; code[unique = true];
+; MyProduct
+
+INSERT_UPDATE IntegrationObjectItem; integrationObject(code)[unique = true]; code[unique = true]; type(code)
+; MyProduct ; Product ; Product
+
+INSERT_UPDATE IntegrationObjectItemAttribute; integrationObjectItem(integrationObject(code), code)[unique = true]; attributeName[unique = true]; attributeDescriptor(enclosingType(code), qualifier);
+; MyProduct:Product ; code ; Product:code ;
+; MyProduct:Product ; name ; Product:name ;
+Test Integration Object OData APIs:
+
+Access the OData endpoint to retrieve or post data using URLs like:
+https://<host>:<port>/odata2webservices/<IntegrationObjectCode>
+
+Use standard HTTP methods (GET for reading, POST for writing).
+
+Monitor Integration API Requests:
+
+Use SAP Commerce Backoffice Integration UI for monitoring inbound and outbound requests.
+
+Enable outbound request monitoring by setting properties in the HAC configuration.
+
+Summary Table of Inbound vs Outbound Integration Objects
+Integration Type	Description	Usage Example
+Inbound	Data coming INTO SAP Commerce	Customer details from ERP to Commerce
+Outbound	Data going OUT OF SAP Commerce	Order info sent from Commerce to ERP
+This approach guarantees structured, reliable data exchange for business processes involving SAP Commerce and external systems. The Integration Object is crucial in modeling the data entities and attributes to ensure smooth master data synchronization or process integration via OData-based RESTful services.
